@@ -1,0 +1,86 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Sample OCC API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/occ/v2/{baseSite}",
+      "variables": {
+        "baseSite": {
+          "default": "electronics"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/products/{code}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get product by code",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "BASIC"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product"
+          }
+        }
+      }
+    },
+    "/carts": {
+      "post": {
+        "tags": [
+          "Carts"
+        ],
+        "summary": "Create cart",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "userId": "anonymous"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    }
+  }
+}
