@@ -129,17 +129,17 @@ test('GitHub client fetches a manifest, directory listing, and raw file', async 
   const requests = [];
   const server = http.createServer((request, response) => {
     requests.push({ url: request.url, accept: request.headers.accept });
-    if (request.url === '/repos/acme/ai-dev-assistant/contents/manifest/features.json?ref=v1.0.0') {
+    if (request.url === '/repos/acme/ai-dev-assistant/contents/manifest/features.json?ref=v1.0.1') {
       response.writeHead(200, { 'content-type': 'application/json' });
       response.end(JSON.stringify({ features: { sample: { description: 'Sample', files: [] } } }));
       return;
     }
-    if (request.url === '/repos/acme/ai-dev-assistant/contents/.github/skills/sample?ref=v1.0.0') {
+    if (request.url === '/repos/acme/ai-dev-assistant/contents/.github/skills/sample?ref=v1.0.1') {
       response.writeHead(200, { 'content-type': 'application/json' });
       response.end(JSON.stringify([{ type: 'file', name: 'SKILL.md', path: '.github/skills/sample/SKILL.md' }]));
       return;
     }
-    if (request.url === '/repos/acme/ai-dev-assistant/contents/.github/skills/sample/SKILL.md?ref=v1.0.0') {
+    if (request.url === '/repos/acme/ai-dev-assistant/contents/.github/skills/sample/SKILL.md?ref=v1.0.1') {
       response.writeHead(200, { 'content-type': 'text/plain' });
       response.end('# skill from GitHub');
       return;
@@ -154,7 +154,7 @@ test('GitHub client fetches a manifest, directory listing, and raw file', async 
   const client = createGitHubClient({
     owner: 'acme',
     repo: 'ai-dev-assistant',
-    ref: 'v1.0.0',
+    ref: 'v1.0.1',
     apiBaseUrl: `http://127.0.0.1:${address.port}`,
   });
 

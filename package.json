@@ -1,6 +1,6 @@
 {
   "name": "ai-dev-assistant",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI installer for selected AI Dev Assistant features",
   "license": "UNLICENSED",
   "private": false,
@@ -27,6 +27,6 @@
   },
   "aiDevAssistant": {
     "repository": "AamenYousri/ai-dev-assistant",
-    "ref": "v1.0.0"
+    "ref": "v1.0.1"
   }
 }

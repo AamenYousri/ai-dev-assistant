@@ -10,11 +10,6 @@
           "kind": "directory"
         },
         {
-          "source": ".github/prompts/analyze-logs.prompt.md",
-          "destination": ".github/prompts/analyze-logs.prompt.md",
-          "kind": "file"
-        },
-        {
           "source": ".github/agents/log-analyzer.agent.md",
           "destination": ".github/agents/log-analyzer.agent.md",
           "kind": "file"
@@ -28,11 +23,6 @@
           "source": ".github/skills/logging-advisor",
           "destination": ".github/skills/logging-advisor",
           "kind": "directory"
-        },
-        {
-          "source": ".github/prompts/suggest-logging.prompt.md",
-          "destination": ".github/prompts/suggest-logging.prompt.md",
-          "kind": "file"
         }
       ]
     },
@@ -43,11 +33,6 @@
           "source": ".github/skills/occ-postman-generator",
           "destination": ".github/skills/occ-postman-generator",
           "kind": "directory"
-        },
-        {
-          "source": ".github/prompts/generate-occ-postman.prompt.md",
-          "destination": ".github/prompts/generate-occ-postman.prompt.md",
-          "kind": "file"
         }
       ]
     },
@@ -58,11 +43,6 @@
           "source": ".github/skills/drawio-diagram-generator",
           "destination": ".github/skills/drawio-diagram-generator",
           "kind": "directory"
-        },
-        {
-          "source": ".github/prompts/generate-drawio.prompt.md",
-          "destination": ".github/prompts/generate-drawio.prompt.md",
-          "kind": "file"
         },
         {
           "source": "integrations/mcp/drawio-setup.md",
@@ -78,11 +58,6 @@
           "source": ".github/skills/documentation-confluence",
           "destination": ".github/skills/documentation-confluence",
           "kind": "directory"
-        },
-        {
-          "source": ".github/prompts/draft-documentation.prompt.md",
-          "destination": ".github/prompts/draft-documentation.prompt.md",
-          "kind": "file"
         },
         {
           "source": ".github/agents/documentation-assistant.agent.md",
@@ -103,16 +78,11 @@
           "source": ".github/skills/worklog-generator",
           "destination": ".github/skills/worklog-generator",
           "kind": "directory"
-        },
-        {
-          "source": ".github/prompts/generate-worklog.prompt.md",
-          "destination": ".github/prompts/generate-worklog.prompt.md",
-          "kind": "file"
         }
       ]
     },
     "code-review": {
-      "description": "GitLab Duo MR review instructions plus Copilot local review skill and agent.",
+      "description": "Local pre-MR review skill and read-only agent.",
       "files": [
         {
           "source": ".github/skills/code-review",
@@ -120,18 +90,8 @@
           "kind": "directory"
         },
         {
-          "source": ".github/prompts/review-changes.prompt.md",
-          "destination": ".github/prompts/review-changes.prompt.md",
-          "kind": "file"
-        },
-        {
           "source": ".github/agents/code-reviewer.agent.md",
           "destination": ".github/agents/code-reviewer.agent.md",
-          "kind": "file"
-        },
-        {
-          "source": ".gitlab/duo/mr-review-instructions.yaml",
-          "destination": ".gitlab/duo/mr-review-instructions.yaml",
           "kind": "file"
         }
       ]
@@ -143,11 +103,6 @@
           "source": ".github/skills/security-checks",
           "destination": ".github/skills/security-checks",
           "kind": "directory"
-        },
-        {
-          "source": ".github/prompts/security-review.prompt.md",
-          "destination": ".github/prompts/security-review.prompt.md",
-          "kind": "file"
         },
         {
           "source": ".github/agents/security-reviewer.agent.md",

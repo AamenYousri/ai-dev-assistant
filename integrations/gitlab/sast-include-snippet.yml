@@ -1,4 +1,0 @@
-# Optional snippet. Merge this into the project's existing .gitlab-ci.yml
-# after checking the current pipeline and organizational security requirements.
-include:
-  - template: Jobs/SAST.gitlab-ci.yml

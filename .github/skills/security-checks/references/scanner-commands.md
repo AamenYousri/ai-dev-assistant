@@ -24,4 +24,9 @@ On Windows, use the corresponding `dependency-check.bat` executable. For Maven p
 
 ## GitLab SAST
 
-See `integrations/gitlab/sast-include-snippet.yml` and the official GitLab SAST documentation. Do not overwrite an existing CI pipeline; merge the include into the current configuration and validate the pipeline first.
+Merge this into the project's existing `.gitlab-ci.yml` after checking stages, runner executor, language support, and company policy. Do not overwrite an existing pipeline. See the official GitLab SAST documentation.
+
+```yaml
+include:
+  - template: Jobs/SAST.gitlab-ci.yml
+```
