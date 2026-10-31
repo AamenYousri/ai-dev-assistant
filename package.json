@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_GITHUB_ORG/ai-dev-assistant.git"
+    "url": "https://github.com/AamenYousri/ai-dev-assistant.git"
   },
   "scripts": {
     "test": "node --test tests/node/*.test.js",
@@ -26,7 +26,7 @@
     "package:cli": "npm pack"
   },
   "aiDevAssistant": {
-    "repository": "YOUR_GITHUB_ORG/ai-dev-assistant",
+    "repository": "AamenYousri/ai-dev-assistant",
     "ref": "v1.0.0"
   }
 }
