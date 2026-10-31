@@ -2,7 +2,7 @@
 
 **How do I run a feature?** Type `/` in Copilot Chat and choose the skill (for example `/logging-advisor`), then add context. Skills also load automatically when the request matches their description.
 
-**Where are the agents?** `.github/agents/*.agent.md` appear in the Agent picker (Log Analyzer, Code Reviewer, Security Reviewer, Documentation Assistant). They restrict tools; the workflow itself is in the matching skill.
+**Where are the agents?** `.github/agents/*.agent.md` appear in the Agent picker (Code Reviewer, Security Reviewer). They restrict tools; the workflow itself is in the matching skill.
 
 **Why no prompt files?** A skill is already a slash command, and prompt files only run in Local harness sessions. A prompt that only says "use skill X" adds nothing.
 

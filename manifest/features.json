@@ -8,11 +8,6 @@
           "source": ".github/skills/log-analyzer",
           "destination": ".github/skills/log-analyzer",
           "kind": "directory"
-        },
-        {
-          "source": ".github/agents/log-analyzer.agent.md",
-          "destination": ".github/agents/log-analyzer.agent.md",
-          "kind": "file"
         }
       ]
     },
@@ -58,11 +53,6 @@
           "source": ".github/skills/documentation-confluence",
           "destination": ".github/skills/documentation-confluence",
           "kind": "directory"
-        },
-        {
-          "source": ".github/agents/documentation-assistant.agent.md",
-          "destination": ".github/agents/documentation-assistant.agent.md",
-          "kind": "file"
         },
         {
           "source": "integrations/mcp/atlassian-rovo-setup.md",

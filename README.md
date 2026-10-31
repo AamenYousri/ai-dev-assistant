@@ -1,16 +1,16 @@
 # AI Dev Assistant
 
-Installable developer-workflow features for VS Code + GitHub Copilot and GitLab. Each feature is a **skill** (the workflow), optionally a read-only **agent** (enforced tool restrictions), optional **helper scripts** for deterministic work, and optional **MCP** setup for external tools.
+Installable developer-workflow features for VS Code + GitHub Copilot and GitLab. Each feature is a **skill** (the workflow), plus optional **helper scripts** for deterministic work, optional **MCP** setup for external tools, and, for review and security only, a read-only **agent**.
 
 ## Features
 
 | Feature ID | What it does | Parts | Reuses |
 |---|---|---|---|
-| `log-analyzer` | Analyze logs, correlate with source | skill, agent, redact/summarize scripts | Dynatrace, if available |
+| `log-analyzer` | Analyze logs, correlate with source | skill, redact/summarize scripts | Dynatrace, if available |
 | `logging-advisor` | Suggest where/what/level to log | skill | - |
 | `occ-postman-generator` | Postman collection for custom OCC APIs | skill, OpenAPI converter script | Postman import |
 | `drawio-diagram-generator` | Editable draw.io diagrams | skill, MCP guide | [draw.io MCP](https://www.drawio.com/docs/manual/generate/drawio-mcp-server/) |
-| `documentation-confluence` | Draft docs / Confluence pages | skill, agent, MCP guide | [Atlassian Rovo MCP](https://developer.atlassian.com/cloud/rovo-mcp/guides/getting-started/) |
+| `documentation-confluence` | Draft docs / Confluence pages | skill, MCP guide | [Atlassian Rovo MCP](https://developer.atlassian.com/cloud/rovo-mcp/guides/getting-started/) |
 | `worklog-generator` | Worklog text from verified Git activity | skill, Git evidence script | Tempo |
 | `code-review` | Local pre-MR review with Java, OCC, CAP, and SQL criteria | skill, agent | - |
 | `security-checks` | Interpret scanner output, review risky changes | skill, agent, scanner notes | GitLab SAST, Semgrep, Dependency-Check |
@@ -53,7 +53,7 @@ python .github/skills/worklog-generator/scripts/git_activity.py --since yesterda
 | Primitive | Used for | Why |
 |---|---|---|
 | Skill | The workflow and output format | Loaded on demand, portable, appears as a slash command. No separate prompt files are needed. |
-| Agent | Log analysis, review, security, docs | Only where a tool restriction matters (`tools:` in frontmatter, no `edit` for reviewers). Bodies just point to the skill. |
+| Agent | Code review, security review | Only where a dedicated mode with restricted tools matters (`tools:` in frontmatter, no `edit`). Bodies just point to the skill. |
 | Script | Redaction, grouping, OpenAPI conversion, Git evidence | Deterministic work stays out of the LLM. |
 | MCP | draw.io, Atlassian | Only when an external system is needed. Configure it deliberately; the installer never touches `.vscode/mcp.json`. |
 
