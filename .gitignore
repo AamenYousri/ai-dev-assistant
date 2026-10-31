@@ -7,3 +7,7 @@ venv/
 *.redacted.log
 postman_collection.json
 reports/
+
+# npm CLI package output
+dist/
+*.tgz

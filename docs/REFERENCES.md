@@ -22,3 +22,10 @@
 - MCP servers: https://code.visualstudio.com/docs/agent-customization/mcp-servers
 
 External feature availability, pricing, authentication requirements, and product behavior can change. Check the linked vendor documentation before enabling a feature in a company environment.
+
+## Installer / distribution references
+
+- npm package specifiers (Git URLs and tarball URLs): https://docs.npmjs.com/cli/v11/using-npm/package-spec
+- npx / npm exec: https://docs.npmjs.com/cli/v11/commands/npm-exec
+- GitHub repository contents API: https://docs.github.com/en/rest/repos/contents
+- GitHub release assets: https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases

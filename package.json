@@ -1,0 +1,32 @@
+{
+  "name": "ai-dev-assistant",
+  "version": "1.0.0",
+  "description": "CLI installer for selected AI Dev Assistant features",
+  "license": "UNLICENSED",
+  "private": false,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "ai-dev-assistant": "cli/index.js"
+  },
+  "files": [
+    "cli/**",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_GITHUB_ORG/ai-dev-assistant.git"
+  },
+  "scripts": {
+    "test": "node --test tests/node/*.test.js",
+    "pack:check": "npm pack --dry-run",
+    "package:cli": "npm pack"
+  },
+  "aiDevAssistant": {
+    "repository": "YOUR_GITHUB_ORG/ai-dev-assistant",
+    "ref": "v1.0.0"
+  }
+}
