@@ -5,13 +5,13 @@ This repository is the single source of truth. The npm package is a small CLI (`
 ## Publish
 
 1. Set `repository.url` and `aiDevAssistant.repository` in `package.json` to the real GitHub repository.
-2. Set `version` and `aiDevAssistant.ref` to the release (for example `1.0.1` and `v1.0.1`).
+2. Set `version` and `aiDevAssistant.ref` to the release (for example `1.0.3` and `v1.0.3`).
 3. `npm test && npm run package:cli`
-4. Tag `v1.0.1`, create a GitHub Release, and upload `ai-dev-assistant-1.0.1.tgz`.
+4. Tag `v1.0.3`, create a GitHub Release, and upload `ai-dev-assistant-1.0.3.tgz`.
 5. Share the command:
 
 ```bash
-npx --yes --package=https://github.com/<org>/ai-dev-assistant/releases/download/v1.0.1/ai-dev-assistant-1.0.1.tgz ai-dev-assistant install <feature-id>
+npx --yes --package=https://github.com/<org>/ai-dev-assistant/releases/download/v1.0.3/ai-dev-assistant-1.0.3.tgz ai-dev-assistant install <feature-id>
 ```
 
 Build output (`*.tgz`) is git-ignored; do not commit it.
