@@ -22,6 +22,7 @@
   },
   "scripts": {
     "test": "node --test tests/node/*.test.js",
+    "test:security": "python -m unittest discover -s tests -p \"test_*.py\"",
     "pack:check": "npm pack --dry-run",
     "package:cli": "npm pack"
   },

@@ -15,7 +15,7 @@ Draft concise worklog descriptions from evidence supplied by Git, tickets, and t
 4. Ask for the hours or use only hours explicitly provided by the user or approved time-tracking data.
 5. Draft clear, factual entries in past tense. Describe outcome and value without exaggeration.
 6. Remove duplicate or overly technical detail when the target system needs short descriptions.
-7. Present entries for user review. Do not submit to Jira, Tempo, or another time system unless explicitly requested and authorized.
+7. Present entries for user review.
 
 ## Output
 A table with date, worklog description, evidence, and hours (blank or “to confirm” if not provided). Do not allocate hours from commit counts, file timestamps, or estimated coding speed.

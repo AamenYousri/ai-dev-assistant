@@ -72,7 +72,7 @@
       ]
     },
     "code-review": {
-      "description": "Local pre-MR review skill and read-only agent.",
+      "description": "Local pre-PR review skill and read-only agent.",
       "files": [
         {
           "source": ".github/skills/code-review",
@@ -87,7 +87,7 @@
       ]
     },
     "security-checks": {
-      "description": "AI-assisted review with existing security scanners.",
+      "description": "Evidence-based security review with approval-gated scanner checks and redacted reports.",
       "files": [
         {
           "source": ".github/skills/security-checks",

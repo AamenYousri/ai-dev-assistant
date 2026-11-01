@@ -6,6 +6,6 @@
 
 **Why no prompt files?** A skill is already a slash command, and prompt files only run in Local harness sessions. A prompt that only says "use skill X" adds nothing.
 
-**Does this review GitLab Merge Requests?** No. `/code-review` and the Code Reviewer agent review local changes before you open an MR and never post to GitLab.
+**Does this review Pull/Merge Requests?** No. `/code-review` and the Code Reviewer agent review local changes before you open a PR/MR and never post to GitHub, GitLab, or any other Git host.
 
 **When do I need MCP?** Only for external systems: draw.io (diagram files) and Atlassian (Confluence/Jira). Setup guides are installed under `docs/ai-dev-assistant/`.

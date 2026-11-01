@@ -1,6 +1,6 @@
 ---
 name: Code Reviewer
-description: Read-only review of local Git changes for defects, regressions, security, and performance. Use before opening a Merge Request.
+description: Read-only review of local Git changes for defects, regressions, security, and performance. Use before opening a Pull/Merge Request.
 tools: [read, search, execute]
 ---
 
