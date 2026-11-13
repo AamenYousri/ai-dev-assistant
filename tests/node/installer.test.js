@@ -124,6 +124,46 @@ test('dry run does not create files', async () => {
   await assert.rejects(fs.access(path.join(target, '.github/skills/sample/SKILL.md')));
 });
 
+test('worklog feature installs its skill, evidence helper, and agent from the repository manifest', async (t) => {
+  const root = path.resolve(__dirname, '../..');
+  const target = await tempDir();
+  t.after(() => fs.rm(target, { recursive: true, force: true }));
+  const manifest = JSON.parse(await fs.readFile(path.join(root, 'manifest/features.json'), 'utf8'));
+  const client = {
+    async listDirectory(repoPath) {
+      const entries = await fs.readdir(path.join(root, repoPath), { withFileTypes: true });
+      return entries.map((entry) => ({
+        type: entry.isDirectory() ? 'dir' : 'file',
+        name: entry.name,
+        path: `${repoPath}/${entry.name}`,
+      }));
+    },
+    async getFile(repoPath) {
+      return fs.readFile(path.join(root, repoPath));
+    },
+  };
+
+  await installFeature({
+    client,
+    featureId: 'worklog-generator',
+    feature: manifest.features['worklog-generator'],
+    target,
+    overwrite: false,
+    dryRun: false,
+  });
+
+  for (const installedPath of [
+    '.github/skills/worklog-generator/SKILL.md',
+    '.github/skills/worklog-generator/scripts/git_activity.py',
+    '.github/agents/worklog-assistant.agent.md',
+  ]) {
+    assert.deepEqual(
+      await fs.readFile(path.join(target, installedPath)),
+      await fs.readFile(path.join(root, installedPath)),
+    );
+  }
+});
+
 
 test('GitHub client fetches a manifest, directory listing, and raw file', async (t) => {
   const requests = [];

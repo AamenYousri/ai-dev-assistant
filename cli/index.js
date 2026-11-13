@@ -31,8 +31,8 @@ Authentication for private repositories:
 
 Examples:
   ai-dev-assistant list
-  ai-dev-assistant install drawio-diagram-generator
-  ai-dev-assistant install log-analyzer code-review
+  ai-dev-assistant install worklog-generator
+  ai-dev-assistant install log-analyzer code-review security-checks
   ai-dev-assistant install --all --dry-run
 `);
 }

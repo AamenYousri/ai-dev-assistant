@@ -31,43 +31,18 @@
         }
       ]
     },
-    "drawio-diagram-generator": {
-      "description": "Generate editable diagrams with optional draw.io MCP.",
-      "files": [
-        {
-          "source": ".github/skills/drawio-diagram-generator",
-          "destination": ".github/skills/drawio-diagram-generator",
-          "kind": "directory"
-        },
-        {
-          "source": "integrations/mcp/drawio-setup.md",
-          "destination": "docs/ai-dev-assistant/drawio-mcp-setup.md",
-          "kind": "file"
-        }
-      ]
-    },
-    "documentation-confluence": {
-      "description": "Draft technical docs and Confluence pages with optional Atlassian MCP.",
-      "files": [
-        {
-          "source": ".github/skills/documentation-confluence",
-          "destination": ".github/skills/documentation-confluence",
-          "kind": "directory"
-        },
-        {
-          "source": "integrations/mcp/atlassian-rovo-setup.md",
-          "destination": "docs/ai-dev-assistant/atlassian-rovo-mcp-setup.md",
-          "kind": "file"
-        }
-      ]
-    },
     "worklog-generator": {
-      "description": "Turn verified activity into concise worklogs without inferring hours.",
+      "description": "Draft worklogs and commit messages from verified activity without inferring hours.",
       "files": [
         {
           "source": ".github/skills/worklog-generator",
           "destination": ".github/skills/worklog-generator",
           "kind": "directory"
+        },
+        {
+          "source": ".github/agents/worklog-assistant.agent.md",
+          "destination": ".github/agents/worklog-assistant.agent.md",
+          "kind": "file"
         }
       ]
     },

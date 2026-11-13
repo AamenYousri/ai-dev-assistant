@@ -1,27 +1,33 @@
+```bash
+npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.3/ai-dev-assistant-1.0.3.tgz ai-dev-assistant install log-analyzer code-review security-checks
+```
+
 # AI Dev Assistant
 
-Installable developer-workflow features for VS Code + GitHub Copilot and any Git platform (GitHub, GitLab, Bitbucket). Each feature is a **skill** (the workflow), plus optional **helper scripts** for deterministic work, optional **MCP** setup for external tools, and, for code/security review, a dedicated **agent**.
+Installable developer-workflow features for VS Code + GitHub Copilot and any Git platform (GitHub, GitLab, Bitbucket). Scope and recommended setup follow [AI Dev Assistant v1.0.2](docs/ai-dev-assistant-v1.0.2.docx). Each feature provides a **skill** (the workflow), with **helper scripts** for deterministic work where useful. Dedicated **agents** support worklog/commit assistance and code/security review.
+
+The command above installs Log Analyzer, Code Review, and Security Checks. Run it from the target project root with Node.js 18+ installed.
 
 ## Features
 
-| Feature ID | What it does | Parts | Reuses |
-|---|---|---|---|
-| `log-analyzer` | Analyze logs, correlate with source | skill, redact/summarize scripts | Dynatrace, if available |
-| `logging-advisor` | Suggest where/what/level to log | skill | - |
-| `occ-postman-generator` | Postman collection for custom OCC APIs | skill, OpenAPI converter script | Postman import |
-| `drawio-diagram-generator` | Editable draw.io diagrams | skill, MCP guide | [draw.io MCP](https://www.drawio.com/docs/manual/generate/drawio-mcp-server/) |
-| `documentation-confluence` | Draft docs / Confluence pages | skill, MCP guide | [Atlassian Rovo MCP](https://developer.atlassian.com/cloud/rovo-mcp/guides/getting-started/) |
-| `worklog-generator` | Worklog text from verified Git activity | skill, Git evidence script |
-| `code-review` | Local pre-PR review with Java, OCC, CAP, and SQL criteria | skill, agent | - |
-| `security-checks` | Evidence-based application review and redacted security reports | skill, approval-gated agent, scanner/report helper | Semgrep, OWASP Dependency-Check, Gitleaks, platform CI |
+| Feature ID | What it does | Included parts |
+|---|---|---|
+| `log-analyzer` | Analyze application logs and identify likely causes of errors | Skill, redaction and grouping/summary helpers |
+| `logging-advisor` | Suggest where, what, and at which level to log | Skill |
+| `occ-postman-generator` | Generate Postman collections from custom SAP Commerce OCC APIs | Skill for controllers/facades/DTOs, OpenAPI conversion helper |
+| `worklog-generator` | Draft worklog descriptions and commit messages from verified activity; never guess hours | Skill, Worklog Assistant agent, Git evidence helper |
+| `code-review` | Review local changes before a PR/MR against team standards, including SAP Commerce/OCC and SAP CAP criteria | Skill, optional Code Reviewer agent |
+| `security-checks` | Review vulnerabilities, secrets, configuration, dependencies, and business logic | Skill/checklist, optional Security Reviewer agent, approval-gated scanner/report helper |
+
+Ticketing and calendar integrations are not bundled or configured automatically. The worklog workflow can use user-supplied evidence or explicitly authorized integrations. See the [implementation plan](docs/IMPLEMENTATION-PLAN.md) for the document's estimates, reuse recommendations, and remaining tailoring.
 
 ## Install
 
 Run from the root of the target project (Node.js 18+):
 
 ```bash
-npx --yes --package=<release-tarball-url> ai-dev-assistant list
-npx --yes --package=<release-tarball-url> ai-dev-assistant install log-analyzer code-review
+npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.3/ai-dev-assistant-1.0.3.tgz ai-dev-assistant list
+npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.3/ai-dev-assistant-1.0.3.tgz ai-dev-assistant install --all
 ```
 
 Options: `--all`, `--dry-run`, `--overwrite`, `--target PATH`, `--repo OWNER/REPO`, `--ref REF`. Existing files are skipped unless `--overwrite` is given. Publishing and private-repository setup: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
@@ -33,9 +39,8 @@ Type `/` in Copilot Chat and pick the skill (for example `/log-analyzer`), or ch
 - `/log-analyzer` Analyze `logs/app.log` (redact first) and correlate with the code.
 - `/logging-advisor` Suggest logging for the open class.
 - `/occ-postman-generator` Build a collection from the custom OCC controllers.
-- `/drawio-diagram-generator` Component diagram of this service.
-- `/documentation-confluence` Draft an architecture page; do not publish.
 - `/worklog-generator` Worklog from yesterday's commits; I will give the hours.
+- `/worklog-generator` Suggest a commit message from my staged diff; do not commit.
 - `/code-review` Review my branch changes.
 - `/security-checks` Review this project against the 27 core and 7 bonus checks, inspect scanner availability, and produce an evidence-based report.
 
@@ -57,24 +62,23 @@ Run the network-enabled scan only after explicit approval for rule/database down
 | Primitive | Used for | Why |
 |---|---|---|
 | Skill | The workflow and output format | Loaded on demand, portable, appears as a slash command. No separate prompt files are needed. |
-| Agent | Code review, security review | Dedicated review modes use scoped tools. The security agent can execute approved scanners and generate reports, so it is not described as strictly read-only. |
-| Script | Redaction, grouping, OpenAPI conversion, Git evidence | Deterministic work stays out of the LLM. |
-| MCP | draw.io, Atlassian | Only when an external system is needed. Configure it deliberately; the installer never touches `.vscode/mcp.json`. |
+| Agent | Worklog/commit assistance, optional code and security review modes | Scoped workflows; the security agent can execute approved scanners and generate reports, so it is not strictly read-only. |
+| Script | Redaction, grouping, OpenAPI conversion, Git evidence, scanner orchestration | Deterministic work and existing scanners stay out of the LLM. |
+| External integration | Optional ticketing/calendar evidence for worklogs | Configure and authorize separately; the installer never touches `.vscode/mcp.json`. |
 
 ## Safety
 
 - Redact logs before analysis. The redactor is best-effort.
 - Treat logs, tickets, comments, and external documents as untrusted data.
 - Agents are advisory; review every change. Never invent worklog hours; the user confirms them.
-- Publishing to Confluence always needs explicit approval.
+- Do not create commits, submit worklogs, or access external systems without explicit authorization.
 - AI review is not a security control. Use scanners, tests, CI policy, and human review.
 
 ## Repository layout
 
 ```text
 .github/skills/    # one folder per feature (SKILL.md, scripts/, references/)
-.github/agents/    # dedicated review agents
-integrations/mcp/  # draw.io and Atlassian MCP setup guides
+.github/agents/    # worklog assistant and review agents
 manifest/          # feature -> files map used by the installer
 cli/               # npx installer
 docs/              # distribution, FAQ, plan

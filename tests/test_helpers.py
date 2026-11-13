@@ -49,7 +49,10 @@ class HelperTests(unittest.TestCase):
 
     def test_manifest_sources_exist(self):
         manifest = json.loads((ROOT / 'manifest/features.json').read_text(encoding='utf-8'))
-        self.assertEqual(len(manifest['features']), 8)
+        self.assertEqual(set(manifest['features']), {
+            'log-analyzer', 'logging-advisor', 'occ-postman-generator',
+            'worklog-generator', 'code-review', 'security-checks',
+        })
         for feature in manifest['features'].values():
             for entry in feature['files']:
                 self.assertTrue((ROOT / entry['source']).exists(), entry['source'])
