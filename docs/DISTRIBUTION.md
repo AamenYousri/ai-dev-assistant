@@ -5,13 +5,13 @@ This repository is the single source of truth. The npm package contains the CLI,
 ## Publish
 
 1. Set `repository.url` and `aiDevAssistant.repository` in `package.json` to the real GitHub repository.
-2. Set `version` and `aiDevAssistant.ref` to the release (for example `1.0.3` and `v1.0.3`).
+2. Set `version` and `aiDevAssistant.ref` to the release (for example `1.0.4` and `v1.0.4`).
 3. `npm test && npm run package:cli`
-4. Ensure the release ref contains the updated manifest and all referenced skill/agent files, tag `v1.0.3`, create a GitHub Release, and upload `ai-dev-assistant-1.0.3.tgz`. If the release already exists, publish updates under a new version/tag rather than moving the existing tag.
+4. Ensure the release ref contains the updated manifest and all referenced skill/agent files, tag `v1.0.4`, create a GitHub Release, and upload `ai-dev-assistant-1.0.4.tgz`. If the release already exists, publish updates under a new version/tag rather than moving the existing tag.
 5. Share the command:
 
 ```bash
-npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.3/ai-dev-assistant-1.0.3.tgz ai-dev-assistant install log-analyzer code-review security-checks
+npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.4/ai-dev-assistant-1.0.4.tgz ai-dev-assistant install log-analyzer code-review security-checks
 ```
 
 Build output (`*.tgz`) is git-ignored; do not commit it.

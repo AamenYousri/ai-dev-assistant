@@ -1,5 +1,5 @@
 ```bash
-npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.3/ai-dev-assistant-1.0.3.tgz ai-dev-assistant install log-analyzer code-review security-checks
+npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.4/ai-dev-assistant-1.0.4.tgz ai-dev-assistant install log-analyzer code-review security-checks
 ```
 
 # AI Dev Assistant
@@ -26,8 +26,8 @@ Ticketing and calendar integrations are not bundled or configured automatically.
 Run from the root of the target project (Node.js 18+):
 
 ```bash
-npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.3/ai-dev-assistant-1.0.3.tgz ai-dev-assistant list
-npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.3/ai-dev-assistant-1.0.3.tgz ai-dev-assistant install --all
+npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.4/ai-dev-assistant-1.0.4.tgz ai-dev-assistant list
+npx --yes --package=https://github.com/AamenYousri/ai-dev-assistant/releases/download/v1.0.4/ai-dev-assistant-1.0.4.tgz ai-dev-assistant install --all
 ```
 
 Options: `--all`, `--dry-run`, `--overwrite`, `--target PATH`, `--repo OWNER/REPO`, `--ref REF`. Existing files are skipped unless `--overwrite` is given. Publishing and private-repository setup: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
